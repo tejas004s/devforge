@@ -3,19 +3,18 @@ import { useState } from "react";
 import api from "./services/api";
 
 import PromptForm from "./components/PromptForm";
-import ExecutionLog from "./components/ExecutionLog";
-import ReportViewer from "./components/ReportViewer";
 import AgentTimeline from "./components/AgentTimeline";
+import ReportViewer from "./components/ReportViewer";
 
 function App() {
-  const [loading, setLoading] =
-    useState(false);
-
   const [report, setReport] =
     useState("");
 
   const [logs, setLogs] =
     useState([]);
+
+  const [loading, setLoading] =
+    useState(false);
 
   const generatePlan = async (
     prompt
@@ -26,9 +25,7 @@ function App() {
       const response =
         await api.post(
           "/generate-plan",
-          {
-            prompt,
-          }
+          { prompt }
         );
 
       setReport(
@@ -46,39 +43,78 @@ function App() {
   };
 
   return (
-    <div
-      style={{
-        maxWidth: "1200px",
-        margin: "0 auto",
-        padding: "20px",
-      }}
-    >
-      <h1>
-        DevForge AI
-      </h1>
+    <div className="app-container">
 
-      <PromptForm
-        onSubmit={generatePlan}
-        loading={loading}
-      />
+      <div className="hero">
+        <h1>DevForge AI</h1>
 
-      <hr />
+        <p>
+          Multi-Agent Software
+          Architecture Generator
+        </p>
 
-      <AgentTimeline
-        logs={logs}
-      />
+        <div className="stats">
+          <div className="stat-card">
+            <div className="stat-number">
+              5
+            </div>
 
-      <hr />
+            <div className="stat-label">
+              Agents
+            </div>
+          </div>
 
-      <ExecutionLog
-        logs={logs}
-      />
+          <div className="stat-card">
+            <div className="stat-number">
+              LangGraph
+            </div>
 
-      <hr />
+            <div className="stat-label">
+              Workflow Engine
+            </div>
+          </div>
 
-      <ReportViewer
-        report={report}
-      />
+          <div className="stat-card">
+            <div className="stat-number">
+              FastAPI
+            </div>
+
+            <div className="stat-label">
+              Backend
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="glass-card">
+        <PromptForm
+          onSubmit={generatePlan}
+          loading={loading}
+        />
+      </div>
+
+      <div className="dashboard">
+
+        <div className="left-panel">
+
+          <div className="glass-card">
+            <AgentTimeline
+              logs={logs}
+            />
+          </div>
+
+        </div>
+
+        <div className="glass-card">
+
+          <ReportViewer
+            report={report}
+          />
+
+        </div>
+
+      </div>
+
     </div>
   );
 }

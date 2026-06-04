@@ -26,4 +26,4 @@ def generate_plan(
 
         "execution_log":
             result["execution_log"]
-    }w
+    }
