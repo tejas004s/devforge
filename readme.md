@@ -1,3 +1,5 @@
+Note: Store the api key in a .env if you want to run it
+
 # DevForge AI
 
 A multi-agent software planning system that converts a high-level project idea into a detailed engineering plan.
