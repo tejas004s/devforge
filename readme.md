@@ -1,6 +1,8 @@
 Note: Store the api key in a .env if you want to run it
 
 # multi-agent software planning system
+<img width="166" height="630" alt="image" src="https://github.com/user-attachments/assets/0465e8e3-0204-47c1-9af6-1f83de7b3d6f" />
+
 
 A multi-agent software planning system that converts a high-level project idea into a detailed engineering plan.
 
